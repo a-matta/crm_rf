@@ -22,6 +22,7 @@ Checking Scalar Variables
     Scalar Variables
 
 
+
 *** Keywords ***
 Add A New Customer
     [Arguments]    @{URL_AND_BROWSER}
@@ -36,7 +37,7 @@ Add A New Customer
     SeleniumLibrary.Click Button    id=submit-id
     Page Should Contain    text=Our Happy Customers
 
-    # Add Customer
+    Add Customer
     Wait Until Element Is Visible    locator=new-customer
     SeleniumLibrary.Click Link    id=new-customer
     SeleniumLibrary.Input Text    id=EmailAddress    text=faker@faker.com
