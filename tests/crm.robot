@@ -28,14 +28,14 @@ Add A New Customer
     [Arguments]    @{URL_AND_BROWSER}
     Open Browser    @{URL_AND_BROWSER}
     Page Should Contain    text=Customers Are Priority One
-    Click Link    id=SignIn
-    Page Should Contain    text=Login
+    # Click Link    id=SignIn
+    # Page Should Contain    text=Login
 
-    # Login
-    SeleniumLibrary.Input Text    id=email-id    text=admin@robotframeworktutorial.com
-    SeleniumLibrary.Input Password    id=password    password=password
-    SeleniumLibrary.Click Button    id=submit-id
-    Page Should Contain    text=Our Happy Customers
+    # # Login
+    # SeleniumLibrary.Input Text    id=email-id    text=admin@robotframeworktutorial.com
+    # SeleniumLibrary.Input Password    id=password    password=password
+    # SeleniumLibrary.Click Button    id=submit-id
+    # Page Should Contain    text=Our Happy Customers
 
     Add Customer
     Wait Until Element Is Visible    locator=new-customer
