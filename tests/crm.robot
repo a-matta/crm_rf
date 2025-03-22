@@ -2,15 +2,30 @@
 Library     SeleniumLibrary    timeout=0:00:10
 
 
+*** Variables ***
+@{MY_VARIABLE}          Hello There    How are you    Hey!Thankyou
+${YOUR_VARIABLE1}       Scaler
+${YOUR_VARIABLE2}       Celebration
+${YOUR_VARIABLE3}       Celebration
+@{URL_AND_BROWSER}      https://automationplayground.com/crm/    Chrome
+
+
 *** Test Cases ***
 Should Be Able To Add A New Customer
     [Tags]    smoke    1006    contacts
-    Add A New Customer
+    Add A New Customer    @{URL_AND_BROWSER}
+
+Checking List Variables
+    List Variables
+
+Checking Scalar Variables
+    Scalar Variables
 
 
 *** Keywords ***
 Add A New Customer
-    Open Browser    https://automationplayground.com/crm/    Chrome
+    [Arguments]    @{URL_AND_BROWSER}
+    Open Browser    @{URL_AND_BROWSER}
     Page Should Contain    text=Customers Are Priority One
     Click Link    id=SignIn
     Page Should Contain    text=Login
@@ -28,3 +43,12 @@ Add A New Customer
     SeleniumLibrary.Select Radio Button    gender    female
     SeleniumLibrary.Click Button    locator=Submit
     Close Browser
+
+List Variables
+    Log    ${MY_VARIABLE}[0]
+    Log    ${MY_VARIABLE}[1]
+    Log    ${MY_VARIABLE}[2]
+
+Scalar Variables
+    ${YOUR_VARIABLE1}    Set Variable    Inflation
+    Log    ${YOUR_VARIABLE1}
