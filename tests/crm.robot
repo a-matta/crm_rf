@@ -29,10 +29,14 @@ Add A New Customer
     Page Should Contain    text=Customers Are Priority One
     Click Link    id=SignIn
     Page Should Contain    text=Login
+
+    # Login
     SeleniumLibrary.Input Text    id=email-id    text=admin@robotframeworktutorial.com
     SeleniumLibrary.Input Password    id=password    password=password
     SeleniumLibrary.Click Button    id=submit-id
     Page Should Contain    text=Our Happy Customers
+
+    # Add Customer
     Wait Until Element Is Visible    locator=new-customer
     SeleniumLibrary.Click Link    id=new-customer
     SeleniumLibrary.Input Text    id=EmailAddress    text=faker@faker.com
@@ -42,6 +46,11 @@ Add A New Customer
     SeleniumLibrary.Select From List By Value    id=StateOrRegion    TX
     SeleniumLibrary.Select Radio Button    gender    female
     SeleniumLibrary.Click Button    locator=Submit
+    Wait Until Page Contains    text=Success! New customer added.
+
+    # Logout
+    SeleniumLibrary.Click Link    Sign Out
+    Page Should Contain    text=Signed Out
     Close Browser
 
 List Variables
